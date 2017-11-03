@@ -11,7 +11,7 @@ MenuLayer::~MenuLayer()
 }
 bool MenuLayer::init()
 {
-	if (!cocos2d::Layer::init())
+	if (!CCLayer::init())
 	{
 		return false;
 	}
