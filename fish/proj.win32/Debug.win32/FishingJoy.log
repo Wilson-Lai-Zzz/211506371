@@ -1,0 +1,54 @@
+﻿生成启动时间为 2017/12/9 23:21:52。
+     1>项目“D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\FishingJoy.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\修仙软件\Visual Studio2013\VC\bin\CL.exe /c /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx\include" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx\kazmath\include" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx\platform\win32" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx\platform\third_party\win32" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\cocos2dx\platform\third_party\win32\OGLES" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\external" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\external\chipmunk\include\chipmunk" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\CocosDenshion\include" /I"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\extensions" /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc120.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\BackgroundLayer.cpp ..\Classes\Bullet.cpp ..\Classes\Cannon.cpp ..\Classes\CannonLayer.cpp ..\Classes\FishNet.cpp ..\Classes\GameScene.cpp ..\Classes\TouchLayer.cpp ..\Classes\Weapon.cpp
+         FishNet.cpp
+         Cannon.cpp
+         Bullet.cpp
+         BackgroundLayer.cpp
+         AppDelegate.cpp
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\fish.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         正在生成代码...
+         正在编译...
+         Weapon.cpp
+         TouchLayer.cpp
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\fish.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+         GameScene.cpp
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\gamescene.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\fish.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\gamescene.cpp(132): warning C4305: “初始化”: 从“double”到“float”截断
+     1>d:\colos\cocos2d-x-2.2.5\projects\fish\classes\gamescene.cpp(133): warning C4305: “初始化”: 从“double”到“float”截断
+         CannonLayer.cpp
+         正在生成代码...
+       PreLinkEvent:
+         if not exist "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\" mkdir "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\"
+         xcopy /Y /Q "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\..\..\..\external\libwebsockets\win32\lib\*.*" "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\"
+         :VCEnd
+         复制了 2 个文件
+       Link:
+         D:\修仙软件\Visual Studio2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\FishingJoy.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\\" libExtensions.lib libcocos2d.lib libCocosDenshion.lib opengl32.lib glew32.lib libBox2d.lib libchipmunk.lib libcurl_imp.lib pthreadVCE2.lib websockets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\FishingJoy.pdb" /SUBSYSTEM:WINDOWS,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\FishingJoy.lib" /MACHINE:X86 /SAFESEH Debug.win32\AppDelegate.obj
+         Debug.win32\BackgroundLayer.obj
+         Debug.win32\Bullet.obj
+         Debug.win32\Cannon.obj
+         Debug.win32\CannonLayer.obj
+         Debug.win32\Fish.obj
+         Debug.win32\FishLayer.obj
+         Debug.win32\FishNet.obj
+         Debug.win32\GameMenuLayer.obj
+         Debug.win32\GameScene.obj
+         Debug.win32\MenuLayer.obj
+         Debug.win32\StaticData.obj
+         Debug.win32\TouchLayer.obj
+         Debug.win32\Weapon.obj
+         Debug.win32\main.obj
+         "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\libcocos2d.lib"
+         "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\libCocosDenshion.lib"
+         "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\libExtensions.lib"
+         "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\libBox2D.lib"
+         "D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\libchipmunk.lib"
+         FishingJoy.vcxproj -> D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\Debug.win32\FishingJoy.exe
+     1>已完成生成项目“D:\colos\cocos2d-x-2.2.5\projects\fish\proj.win32\FishingJoy.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:11.50
