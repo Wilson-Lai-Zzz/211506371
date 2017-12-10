@@ -1,13 +1,13 @@
 #include "Weapon.h"
 
-#define BULLET_COUNT 10
+#define BULLET_COUNT 1
 
 Weapon* Weapon::create(CannonType type)
 {
 	Weapon* weapon = new Weapon();
 	if(weapon && weapon->init(type))
 	{
-		weapon->autorelease();//)将对象加入对象池中
+		weapon->autorelease();
 		return weapon;
 	}
 	else
@@ -73,7 +73,7 @@ CannonType Weapon::getCannonType()
 	return _cannon->getType();
 }
 
-void Weapon::changeCannon(CannonOperate operate)//变换炮台
+void Weapon::changeCannon(CannonOperate operate)
 {
 	int type = (int) _cannon->getType();
 	type += operate;
@@ -87,15 +87,13 @@ Weapon::~Weapon(void)
 	CC_SAFE_RELEASE(_particils);
 }
 
-void Weapon::aimAt(CCPoint target)//旋转炮台，让炮口对准targe的方向
+void Weapon::aimAt(CCPoint target)
 {
 	_cannon->aimAt(target);
 }
 
-void Weapon::shootTo(CCPoint target)//子弹对准targe的方向
+void Weapon::shootTo(CCPoint target)
 {
-
-	//tget：用户在屏幕触摸的位置
 	Bullet* bullet= getBulletToShoot();
 	if(!bullet) return;
 	CCPoint pointWorldSpace = getParent()->convertToWorldSpace(getPosition());
@@ -106,7 +104,7 @@ void Weapon::shootTo(CCPoint target)//子弹对准targe的方向
 		CCPoint mult = ccpMult(normal, _cannon->getFireRange());
 		target = ccpAdd(pointWorldSpace, mult);
 	}
-	bullet->flyTo(target, _cannon->getType());//发射子弹
+	bullet->flyTo(target, _cannon->getType());
 }
 
 Bullet* Weapon::getBulletToShoot()

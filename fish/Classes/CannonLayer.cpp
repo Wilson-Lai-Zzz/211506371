@@ -8,7 +8,7 @@ CannonLayer::~CannonLayer(void)
 {
 }
 
-bool CannonLayer::init()//³õÊ¼»¯²Ù×÷£¬ÓÃÀ´ÏÔÊ¾ÅÚÌ¨ºÍÏàÓ¦µÄ²Ëµ¥Ïî
+bool CannonLayer::init()
 {
 	if(!CCLayer::init())
 	{
@@ -36,10 +36,10 @@ bool CannonLayer::init()//³õÊ¼»¯²Ù×÷£¬ÓÃÀ´ÏÔÊ¾ÅÚÌ¨ºÍÏàÓ¦µÄ²Ëµ¥Ïî
 	return true;
 }
 
-void CannonLayer::switchCannonCallback(cocos2d::CCObject* sender)//ÇÐ»»µ±Ç°µÄÅÚÌ¨ÀàÐÍ
+void CannonLayer::switchCannonCallback(cocos2d::CCObject* sender)
 {
 	CannonOperate operate = k_Cannon_Operate_Up;
-	if((CCMenuItemImage*)sender == _subMenuItem)//Èç¹ûsenderÊÇ_subMenuItem,±íÊ¾ÀàÐÍ¼õÒ»
+	if((CCMenuItemImage*)sender == _subMenuItem)
 	{
 		operate = k_Cannon_Operate_Down;
 	}
@@ -47,12 +47,12 @@ void CannonLayer::switchCannonCallback(cocos2d::CCObject* sender)//ÇÐ»»µ±Ç°µÄÅÚÌ
 
 }
 
-void CannonLayer::aimAt(CCPoint target)//ÈÃÅÚ¿Ú¶Ô×¼targeµÄ·½Ïò
+void CannonLayer::aimAt(CCPoint target)
 {
-	_weapon->aimAt(target);//Ðý×ªÅÚÌ¨
+	_weapon->aimAt(target);
 }
 
-void CannonLayer::shootTo(CCPoint target)//×Óµ¯¶Ô×¼targeµÄ·½Ïò
+void CannonLayer::shootTo(CCPoint target)
 {
-	_weapon->shootTo(target);//·¢Éä×Óµ¯
+	_weapon->shootTo(target);
 }

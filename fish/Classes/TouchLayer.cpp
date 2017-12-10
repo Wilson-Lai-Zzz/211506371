@@ -15,7 +15,7 @@ void TouchLayer::registerWithTouchDispatcher()
 
 }
 
-bool TouchLayer::init()//³õÊ¼»¯²Ù×÷
+bool TouchLayer::init()
 {
 	if(!CCLayer::init())
 	{
@@ -27,7 +27,7 @@ bool TouchLayer::init()//³õÊ¼»¯²Ù×÷
 	return true;
 }
 
-bool TouchLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)//ÖØ¶¨Òå»ùÀàµÄĞéº¯Êı£¬ÖØ¶¨Òå»ùÀàµÄĞéº¯Êı
+bool TouchLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
 	GameScene* gameScene = getGameScene();
 	CCPoint target = pTouch->getLocation();
@@ -35,21 +35,21 @@ bool TouchLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)//ÖØ¶¨Òå»ùÀàµÄĞéº
 	return true;
 }
 
-void TouchLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)//µ±´¥ÃşÒÆ¶¯Ê±´¥·¢µÄÊÂ¼ş
+void TouchLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
 	GameScene* gameScene = getGameScene();
 	CCPoint target = pTouch->getLocation();
 	gameScene->cannonAimAt(target);
 }
 
-void TouchLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)//´¥Ãş½áÊøÊ±´¥·¢µÄÊÂ¼ş
+void TouchLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
 	GameScene* gameScene = getGameScene();
 	CCPoint target = pTouch->getLocation();
 	gameScene->cannonShootTo(target);
 }
 
-GameScene* TouchLayer::getGameScene()//»ñµÃÓÎÏ·³¡¾°µÄÖ¸Õë
+GameScene* TouchLayer::getGameScene()
 {
 	return (GameScene*)getParent();
 }

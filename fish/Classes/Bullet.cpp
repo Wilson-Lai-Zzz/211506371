@@ -13,7 +13,7 @@ Bullet::~Bullet(void)
 {
 }
 
-bool Bullet::init()//子弹对象创建后所进行的初始化工作
+bool Bullet::init()
 {
 	if(!CCNode::init())
 	{
@@ -21,12 +21,12 @@ bool Bullet::init()//子弹对象创建后所进行的初始化工作
 	}
 	CCString* fileName = CCString::createWithFormat("weapon_bullet_%03d.png", 1);
 	_bulletSprite = CCSprite::createWithSpriteFrameName(fileName->getCString());
-	_bulletSprite->setAnchorPoint(ccp(0.5, 1));//设置子弹锚点
+	_bulletSprite->setAnchorPoint(ccp(0.5, 1));//设置子弹的锚点
 	this->addChild(_bulletSprite);
 	return true;
 }
 
-float Bullet::getSpeed(int type)//子弹的速度
+float Bullet::getSpeed(int type)
 {
 	float speed = 640;
 	switch(type)
@@ -58,15 +58,15 @@ float Bullet::getSpeed(int type)//子弹的速度
 	return speed;
 }
 
-void Bullet::end()//子弹飞行结束时所做的处理
+void Bullet::end()
 {
-	stopActionByTag(k_Bullet_Action);//停止子弹的移动动作
-	this->setVisible(false);//将子弹设为不可见
+	stopActionByTag(k_Bullet_Action);
+	this->setVisible(false);
 	FishNet* fishNet = (FishNet*)getUserObject();
 	fishNet->showAt(getPosition(), getTag());
 }
 
-void Bullet::flyTo(CCPoint targetInWorldSpace, int type/* =0 */)//子弹的飞行处理
+void Bullet::flyTo(CCPoint targetInWorldSpace, int type/* =0 */)
 {
 	CCPoint startInNodeSpace = CCPointZero;
 	CCPoint startInWorldSpace = this->getParent()->convertToWorldSpace(startInNodeSpace);

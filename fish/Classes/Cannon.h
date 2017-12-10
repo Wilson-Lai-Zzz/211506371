@@ -3,7 +3,7 @@
 USING_NS_CC;
 
 #define _CANNON_H
-//枚举炮塔种类
+
 typedef enum{
 	k_Cannon_Type_1 = 0,
 	k_Cannon_Type_2,
@@ -26,13 +26,13 @@ class Cannon :
 {
 public:
 	Cannon(void);
-	static Cannon* create(CannonType type = k_Cannon_Type_1);//创建炮台
-	bool init(CannonType type = k_Cannon_Type_1);//设定炮台的类型，并将各种炮台的精灵加入数组中
-	CCSize getSize();//得到炮塔台大小
-	float getFireRange();//炮台的攻击范围
+	static Cannon* create(CannonType type = k_Cannon_Type_1);
+	bool init(CannonType type = k_Cannon_Type_1);
+	CCSize getSize();
+	float getFireRange();
 	CC_PROPERTY(CannonType, _type, Type);
 	virtual ~Cannon(void);
-	void aimAt(CCPoint target);//瞄准，炮台随着鼠标位置瞄准
+	void aimAt(CCPoint target);
 protected:
 	CCArray* _cannonSprites;
 };

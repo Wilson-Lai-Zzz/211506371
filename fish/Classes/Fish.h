@@ -33,17 +33,17 @@ public:
 	Fish(void);
 	static Fish* create(FishType type = k_Fish_Type_SmallFish);
 	virtual bool init(FishType type = k_Fish_Type_SmallFish);
-	int getScore();//得分
-	int getSpeed();//速度
+	int getScore();
+	int getSpeed();
 	CC_SYNTHESIZE(FishType, _type, Type);
 	virtual ~Fish(void);
-	CCRect getCollisionArea();//得到碰撞区域
-	void beCaught();//捕获鱼
-	void moveTo(CCPoint destination);//羽游动
-	void moveEnd();//羽游到指定位置后删除
-	void reset();//重新设置鱼的角度和可见
+	CCRect getCollisionArea();
+	void beCaught();
+	void moveTo(CCPoint destination);
+	void moveEnd();
+	CCSize getSize();
 protected:
-	CCSprite* _fishSprite;
+	CCSprite* _fishSprite;////鱼对应的精灵（图片）
 	void beCaught_CallFunc();
 };
 

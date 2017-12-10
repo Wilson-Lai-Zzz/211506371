@@ -15,7 +15,7 @@ protected:
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
 	virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-	virtual void registerWithTouchDispatcher();//注册带目标的触摸事件
+	virtual void registerWithTouchDispatcher();
 	GameScene* getGameScene(); 
 };
 

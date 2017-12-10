@@ -15,10 +15,10 @@ bool FishNet::init()
 		return false;
 	}
 
-	CCString *fileName = CCString::createWithFormat("weapon_net_%03d.png",1);//从缓存中读取渔网
-	_fishNetSprite = CCSprite::createWithSpriteFrameName(fileName->getCString());//创建出的精灵对象赋值给数据成员
-	_fishNetSprite->setAnchorPoint(ccp(0.5, 1));//设置锚点
-	addChild(_fishNetSprite);//将精灵_fishNetSprite加入本节点中
+	CCString *fileName = CCString::createWithFormat("weapon_net_%03d.png",1);
+	_fishNetSprite = CCSprite::createWithSpriteFrameName(fileName->getCString());
+	_fishNetSprite->setAnchorPoint(ccp(0.5, 1));
+	addChild(_fishNetSprite);
 	return true;
 }
 float FishNet::getSpeed(int type)

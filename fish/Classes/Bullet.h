@@ -14,8 +14,8 @@ public:
 	bool init();
 	void end();
 	void flyTo(CCPoint targetInWorldSpace, int type/* =0 */);
-	CCPoint getCollosionPoint();//得到碰撞点
+	CCPoint getCollosionPoint();
 protected:
-	float getSpeed(int type);//得到速度，不同炮台有不同速度
-	CCSprite* _bulletSprite;//子弹精灵
+	float getSpeed(int type);
+	CCSprite* _bulletSprite;
 };
