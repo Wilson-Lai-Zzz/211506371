@@ -21,7 +21,7 @@ bool Bullet::init()
 	}
 	CCString* fileName = CCString::createWithFormat("weapon_bullet_%03d.png", 1);
 	_bulletSprite = CCSprite::createWithSpriteFrameName(fileName->getCString());
-	_bulletSprite->setAnchorPoint(ccp(0.5, 1));//设置子弹的锚点
+	_bulletSprite->setAnchorPoint(ccp(0.5, 0.18));
 	this->addChild(_bulletSprite);
 	return true;
 }
@@ -50,7 +50,7 @@ float Bullet::getSpeed(int type)
 		speed = 410;
 		break;
 	case 6:
-		speed = 390;
+		speed = 450;
 		break;
 	default:
 		break;

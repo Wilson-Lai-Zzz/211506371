@@ -19,30 +19,30 @@ FishJoyData::~FishJoyData(void)
 {
 }
 
-FishJoyData* FishJoyData::sharedFishJoyData()
+FishJoyData* FishJoyData::getInstance()
 {
-	if(NULL == _sharedFishJoyData)
+	if(NULL == _sharedFishJoyData )
 	{
-		_sharedFishJoyData = new FishJoyData();
-		_sharedFishJoyData -> init();
+		_sharedFishJoyData  = new FishJoyData();
+		_sharedFishJoyData  -> init();
 	}
-	return _sharedFishJoyData;
+	return _sharedFishJoyData ;
 }
 
 void FishJoyData::destoryInstance()
 {
-	CC_SAFE_DELETE(_sharedFishJoyData);
+	CC_SAFE_DELETE(_sharedFishJoyData );
 }
 
-bool FishJoyData::init()//利用CCUserDefault来操作存储在磁盘文件中的数据
+bool FishJoyData::init()
 {
-	_isBeginer = CCUserDefault::sharedUserDefault() -> getBoolForKey(IS_BEGINER, true);//先判断是否是第一次使用
-	if (_isBeginer)//如果_isBeginner的值为true，则将数据重新设为默认值
+	_isBeginer = CCUserDefault::sharedUserDefault() -> getBoolForKey(IS_BEGINER, true);
+	if (_isBeginer)
 	{
 		reset();
 		flush();
 	}
-	else//如果_isBeginner的值为true，则将数据重新设为默认值件中读取出来，并赋值给相关的数据成员
+	else
 	{
 		CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
 		this -> setGold(userDefault -> getDoubleForKey(GOLD));
@@ -52,7 +52,7 @@ bool FishJoyData::init()//利用CCUserDefault来操作存储在磁盘文件中的数据
 	return true;
 }
 
-void FishJoyData::reset()//将数据重设为初始化时的数据
+void FishJoyData::reset()
 {
 	this -> setIsMusic(true);
 	this -> setIsSound(true);
@@ -60,12 +60,10 @@ void FishJoyData::reset()//将数据重设为初始化时的数据
 	this -> setIsBeginer(false);
 }
 
-void FishJoyData::flush()//将当前动态数据的值保存到xml文件中
+void FishJoyData::flush()
 {
-	CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();//通过CCUserDefault的对象保存各个属性对应的值
+	CCUserDefault* userDefault = CCUserDefault::sharedUserDefault();
 	
-
-	//每种数据成员一个唯一的key和成员对应的值关联在一起并保存起来
 	userDefault -> setBoolForKey(IS_BEGINER, _isBeginer);
 	userDefault -> setIntegerForKey(GOLD, _gold);
 	userDefault -> setBoolForKey(MUSIC, _isMusic);
@@ -74,10 +72,10 @@ void FishJoyData::flush()//将当前动态数据的值保存到xml文件中
 	userDefault -> flush();
 }
 
-void FishJoyData::alterGold(int golds)
+void FishJoyData::alterGold(int detal /*golds*/)
 {
 	int num = getGold();
-	num += golds;
+	num += detal;
 	setGold(num);
 	flush();
 }

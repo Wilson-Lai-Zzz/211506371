@@ -1,7 +1,6 @@
 #include "Fish.h"
-
 enum{
-	k_Action_Animate = 0,
+	k_Action_Animate =0,
 	k_Action_MoveTo
 };
 
@@ -36,10 +35,7 @@ bool Fish::init(FishType type /* = k_Fish_Type_SmallFish */)
 		{
 			return false;
 		}
-		/*运行就出错？？   
-			判断鱼的种类是否越绝界，越界置为小丑鱼
-		*/
-		if (type < k_Fish_Type_SmallFish || type >= k_Fish_Type_MarlineFish)
+		if (type < k_Fish_Type_SmallFish || type >= k_Fish_Type_Count)
 		{
 			type = k_Fish_Type_SmallFish;
 		}
@@ -78,7 +74,7 @@ void Fish::beCaught(){
 	stopActionByTag(k_Action_MoveTo);
 	CCCallFunc* callFunc = CCCallFunc::create(this,callfunc_selector(Fish::beCaught_CallFunc));
 	CCSequence* sequence = CCSequence::create(CCDelayTime::create(1.0f),callFunc,NULL);
-	CCBlink* blink = CCBlink::create(1.0f, 8);
+	CCBlink* blink = CCBlink::create(1.0f,5);
 	CCSpawn* spawn = CCSpawn::create(sequence, blink, NULL);
 	_fishSprite->runAction(spawn);
 }
@@ -87,31 +83,33 @@ void Fish::beCaught_CallFunc()
 {
 	if(isRunning())
 	{
-		getParent()->removeChild(this,false);
+		getParent()->removeChild(this,true);
+		//this->removeFromParentAndCleanup(true);
 	}
 }
 
-void Fish::moveTo(CCPoint destination)//直线移动，将鱼移动到指定的位置destination
-{
-	CCPoint point = getParent()->convertToWorldSpace(this->getPosition());//获取鱼的位置并将其转换为世界坐标系
-	float duration = ccpDistance(destination, point) / getSpeed();//根据目标点和鱼现在的位置计算出距离，除以速度，得到移动的时间
-	CCMoveTo *moveTo = CCMoveTo::create(duration, destination);//构建鱼移动的动作
-	CCCallFunc *callFunc = CCCallFunc::create(this, callfunc_selector(Fish::moveEnd));//执行移动结束后的动作
-	CCSequence *sequence = CCSequence::create(moveTo, callFunc, NULL);
+void Fish::moveTo(CCPoint destination)
+{	
+	CCPoint point =getParent()->convertToWorldSpace(this->getPosition());
+	float duration =ccpDistance(destination,point)/getSpeed();
+	CCMoveTo *moveTo =CCMoveTo::create(duration,destination);
+	CCCallFunc *callFunc =CCCallFunc::create(this,callfunc_selector(Fish::moveEnd));
+	CCSequence *sequence =CCSequence::create(moveTo,callFunc,NULL);
 	sequence->setTag(k_Action_MoveTo);
 	this->runAction(sequence);
 }
 
-void Fish::moveEnd()//鱼移动结束后执行的操作
+void Fish::moveEnd()
 {
-	if (isRunning())
+	if(isRunning())
 	{
 		this->stopActionByTag(k_Action_MoveTo);
-		getParent()->removeChild(this, false);//将鱼从FishLayer鱼层中删除
+		getParent()->removeChild(this,false);
 	}
 }
 
 CCSize Fish::getSize()
 {
-	return _fishSprite -> displayFrame() -> getRect().size;
+	return _fishSprite->displayFrame()->getRect().size;
+
 }

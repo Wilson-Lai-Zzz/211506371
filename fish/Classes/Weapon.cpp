@@ -1,6 +1,6 @@
 #include "Weapon.h"
 
-#define BULLET_COUNT 1
+#define BULLET_COUNT 10
 
 Weapon* Weapon::create(CannonType type)
 {

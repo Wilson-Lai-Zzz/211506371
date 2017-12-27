@@ -13,15 +13,15 @@ Cannon::~Cannon(void)
 
 Cannon* Cannon::create(CannonType type)
 {
-	Cannon* cannon = new Cannon();
-	if(cannon && cannon->init(type))
+	Cannon* _cannon = new Cannon();
+	if(_cannon && _cannon->init(type))
 	{
-		cannon->autorelease();
-		return cannon;
+		_cannon->autorelease();
+		return _cannon;
 	}
 	else
 	{
-		CC_SAFE_DELETE(cannon);
+		CC_SAFE_DELETE(_cannon);
 		return NULL;
 	}
 }
@@ -78,27 +78,21 @@ float Cannon::getFireRange()
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
 	double temp = pow(winSize.width/2, 2) + pow(winSize.height, 2);
 	double result = sqrt(temp);
-	return result/7*(_type+1);
+	return result/7*(_type+1)+500;
 }
 
 void Cannon::aimAt(CCPoint target)
 {
+/*	if(target.y < 0)
+	{
+		target.y = 0.0f;
+	}
+*/
 	CCPoint location = getParent()->convertToWorldSpace(getPosition());
 	float angle = ccpAngleSigned(ccpSub(target, location), CCPointMake(0, 1));
-
-	float degrees = CC_RADIANS_TO_DEGREES(angle);
-	if(fabs(degrees) > 60)
+	if(abs(angle)>(3.14/2))
 	{
-		degrees = degrees > 0 ? 60 : -60;
+		angle=angle>0?(3.14/2):-(3.14/2);
 	}
-	/* CC_RADIANS_TO_DEGREES(angle)
-				0
-				|
-				|
-	  -90 -------------- 90
-				|
-				|
-			   180
-	*/
-	this->setRotation(degrees);
+	this->setRotation(CC_RADIANS_TO_DEGREES(angle));
 }

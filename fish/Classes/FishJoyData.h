@@ -7,7 +7,7 @@ class FishJoyData :
 	public cocos2d::CCObject
 {
 public:
-	static FishJoyData* sharedFishJoyData();
+	static FishJoyData* getInstance();
 	static void destoryInstance();
 
 	FishJoyData();

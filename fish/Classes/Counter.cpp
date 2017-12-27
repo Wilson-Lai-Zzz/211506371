@@ -4,7 +4,7 @@ enum{
 };
 Counter* Counter::create(CCArray* presenters, int digit/* = 0 */)
 {
-	CCAssert(digit>=0 && digit<=10,"金币数字只能为0至9之间的数字");
+	CCAssert(digit>=0 && digit<=10,"金币数字只能为0至9之间的数字.");
     Counter *counter = new Counter;
 	if (counter && counter->init(presenters,digit) )
 	{   
@@ -24,16 +24,8 @@ bool Counter::init(CCArray* presenters, int digit/* = 0 */)
 	{
 		return false;
 	}
-    _presenters = CCNode::create();
-	//CCSize size = ((CCNode *) presenters->objectAtIndex(0))->getContentSize();
-	//   for (int i = 0; i < 10; i++) {
-	//       CCNode* node = (CCNode*)presenters->objectAtIndex(i);
-	//       int y = node->getContentSize().height*i;
-	//       node->setPosition(CCPointMake(0, y));
-	//       _presenters->addChild(node, 0, i);
-	//	_presenters->addChild(node,0,i);
-	//	node->setPosition(ccp(0,size,height * i));
-	//   }
+	_presenters = CCNode::create();
+	
 	CCObject *obj = NULL;
 	int i = 0;
 	CCARRAY_FOREACH(presenters,obj)
@@ -70,10 +62,7 @@ void Counter::animation()
 }
 void Counter::visit()
 {
-	//float scale = CCDirector::sharedDirector()->getContentScaleFactor();
-	//CCLOG("scale = %f",scale);
     glEnable(GL_SCISSOR_TEST);
-    //CCNode* presenter = _presenters->getChildByTag(_digit);
     CCSize size = ((CCNode *)_presenters->getChildByTag(_digit))->getContentSize();
     CCPoint position = getParent()->convertToWorldSpace(getPosition());
     glScissor((position.x - size.width / 2) * 0.4, (position.y - size.height / 2) * 0.4, size.width* 0.4, size.height* 0.4);

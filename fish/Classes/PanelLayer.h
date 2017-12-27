@@ -3,7 +3,7 @@
 #include "GoldCounterLayer.h"
 
 USING_NS_CC;
-/*¹¦ÄÜ²ã*/
+
 class PanelLayer
 	:public cocos2d::CCLayer
 {
