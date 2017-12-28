@@ -27,8 +27,8 @@ PersonalAudioEngine::~PersonalAudioEngine()
 bool PersonalAudioEngine::init()
 {
 	this->preloadBackgroundMusic("music_1.mp3");
+	this->preloadBackgroundMusic("music_2.mp3");
 	this->preloadBackgroundMusic("music_3.mp3");
-	this->preloadBackgroundMusic("music_6.mp3");
 	this->preloadEffect("bgm_button.aif");
 	this->preloadEffect("bgm_fire.aif");
 	this->preloadEffect("bgm_net.mp3");

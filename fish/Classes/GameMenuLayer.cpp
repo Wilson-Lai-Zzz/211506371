@@ -40,7 +40,7 @@ void GameMenuLayer::createMenu(void)
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("UI_GameStartMenuLayer-ipadhd.plist");
 	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("UI_GameMenuText_cn-ipadhd.plist");
 	
-	//"��ʼ��Ϸ"��ť����
+	//"开始游戏"按钮正常
 	CCSprite* startNormalBgSprite = CCSprite::createWithSpriteFrameName("ui_button_box02_02.png");
 	CCSprite* startNormalTextSprite = CCSprite::createWithSpriteFrameName("ui_2p_010.png");
 
@@ -49,7 +49,7 @@ void GameMenuLayer::createMenu(void)
 	startNormalBgSprite->addChild(startNormalTextSprite);
 	startNormalTextSprite->setPosition(ccp(startNormalBgSize.width / 2, startNormalBgSize.height / 2 + 20));
 	
-	//"��ʼ��Ϸ"��ťѡ��
+	//"开始游戏"按钮选中
 	CCSprite* startSelectedBgSprite = CCSprite::createWithSpriteFrameName("ui_button_box02_01.png");
 	CCSprite* startSelectedTextSprite = CCSprite::createWithSpriteFrameName("ui_2p_010.png");
 
@@ -59,8 +59,8 @@ void GameMenuLayer::createMenu(void)
 	CCMenuItemSprite* startMenuItem = CCMenuItemSprite::create(startNormalBgSprite, 
 		startSelectedBgSprite, this, menu_selector(GameMenuLayer::menuCallbackStartGame));
 
-	//"ѡ�񳡾�"��ť����
-	CCSprite* sceneNormalBgSprite = CCSprite::createWithSpriteFrameName("ui_button_box01_02.png");
+	//"选择场景"按钮正常
+	CCSprite* sceneNormalBgSprite = CCSprite::createWithSpriteFrameName("ui_button_box01_02.png"/*"ui_button_box05_01.png"*/);
 	CCSprite* sceneNormalTextSprite = CCSprite::createWithSpriteFrameName("button_other_014.png");
 
 	CCSize sceneNormalBgSize = sceneNormalBgSprite->getContentSize();
@@ -68,7 +68,7 @@ void GameMenuLayer::createMenu(void)
 	sceneNormalBgSprite->addChild(sceneNormalTextSprite);
 	sceneNormalTextSprite->setPosition(ccp(sceneNormalBgSize.width / 2, sceneNormalBgSize.height / 2 + 3));
 
-	//"ѡ�񳡾�"��ťѡ��
+	//"选择场景"按钮选中
 	CCSprite* sceneSelectedBgSprite = CCSprite::createWithSpriteFrameName("ui_button_box01_01.png");
 	CCSprite* sceneSelectedTextSprite = CCSprite::createWithSpriteFrameName("button_other_014.png");
 
@@ -77,6 +77,10 @@ void GameMenuLayer::createMenu(void)
 
 	CCMenuItemSprite* sceneMenuItem = CCMenuItemSprite::create(sceneNormalBgSprite, 
 		sceneSelectedBgSprite, this, menu_selector(GameMenuLayer::menuCallbackStartGame));
+
+
+
+
 
 	CCMenu* menu = CCMenu::create(startMenuItem, sceneMenuItem, NULL);
 	this->addChild(menu);

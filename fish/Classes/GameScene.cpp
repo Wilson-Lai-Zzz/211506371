@@ -4,7 +4,7 @@ GameScene::GameScene()
 {
 }
 
-bool GameScene::init()
+bool GameScene::init()//添加各个层
 {
 	do
 	{
