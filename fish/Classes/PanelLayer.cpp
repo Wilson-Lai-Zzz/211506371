@@ -1,6 +1,6 @@
 #include "PanelLayer.h"
 #include "GameScene.h"
-
+#include "ScheduleCountDown.h"
 USING_NS_CC;
 PanelLayer::PanelLayer(void)
 {
@@ -28,6 +28,19 @@ bool PanelLayer::init()
 	_scheduleLabel=CCLabelAtlas::create(CCString::createWithFormat("%d",maxTime)->getCString(),"baoshiyu_shuzi_02-ipadhd.png",50,54,'0');//创计时器
 	addChild(_scheduleLabel);
 	_scheduleLabel->setPosition(ccp(1600, 1200));//倒计时位置
+
+
+	CCSize winSize = CCDirector::sharedDirector()->getWinSize();//获取到应用程序的窗口大小
+	CCMenuItemSprite* pause = CCMenuItemSprite::create(CCSprite::create("112913569.png"),
+		CCSprite::create("112913569.png"),
+		this, menu_selector(PanelLayer::pause));
+
+	CCMenu* menu = CCMenu::create(pause, NULL);
+	this->addChild(menu);
+	CCSize pauseSize = pause->getContentSize();
+	menu->setPosition(CCPointMake(100, winSize.height-60));
+
+
     return true;
 }
 void PanelLayer::scheduleTimeUp()
@@ -43,4 +56,9 @@ void PanelLayer::setScheduleNumber(int number)
 {
 	//CCLabelAtlas *label =(CCLabelAtlas *)getChildByTag(99);
 	_scheduleLabel->setString(CCString::createWithFormat("%d",number)->getCString());
+}
+void PanelLayer::pause(CCObject *sender)
+{
+	GameScene* gameScene = (GameScene*)this->getParent();
+	gameScene->pause();
 }

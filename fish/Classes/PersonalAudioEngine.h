@@ -16,6 +16,8 @@ public:
 	static void destoryIntance();
 	void playBackgroundMusic(int type);
 	void playEffect(EffectType type);
+	void setBackgroundMusicVolume(float volume);//调背景音乐大小
+	void setEffectsVolume(float volume);//调音效大小
 protected:
 	bool init();
 	PersonalAudioEngine();

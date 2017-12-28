@@ -19,8 +19,8 @@ public:
 
 	CC_SYNTHESIZE(bool, _isBeginer, IsBeginer)
 	CC_SYNTHESIZE(int, _gold, Gold)
-	CC_SYNTHESIZE(bool, _isMusic, IsMusic)
-	CC_SYNTHESIZE(bool, _isSound, IsSound)
+	CC_SYNTHESIZE(float, _isMusic, IsMusic)
+	CC_SYNTHESIZE(float, _isSound, IsSound)
 
 	void alterGold(int golds);
 

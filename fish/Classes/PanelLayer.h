@@ -19,5 +19,6 @@ protected:
 	virtual void scheduleTimeUp();
 	virtual void setScheduleNumber(int number);
 	CCLabelAtlas *_scheduleLabel;
+	void pause(CCObject *sender);
 };
 

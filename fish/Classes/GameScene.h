@@ -11,7 +11,10 @@
 #include "GoldCounterLayer.h"
 #include "PersonalAudioEngine.h"
 USING_NS_CC;
-
+typedef enum{
+	k_Operate_Pause = 0,
+	k_Operate_Resume
+}OperateFlag;
 class GameScene :
 	public CCScene
 {
@@ -24,6 +27,9 @@ public:
 	void cannonShootTo(CCPoint target);
 	void alterGold(int delta);
 	void onEnter();
+	void pause();
+	void operateAllSchedulerAndActions(CCNode* node, OperateFlag flag);
+	void Resume();
 protected:
 	BackgroundLayer* _backgroundLayer;
 	FishLayer* _fishLayer;

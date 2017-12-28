@@ -15,21 +15,32 @@ bool GameScene::init()//添加各个层
 		_menuLayer = MenuLayer::create(); 
 		CC_BREAK_IF(!_menuLayer);
 		CC_SAFE_RETAIN(_menuLayer); 
+
+
 		_backgroundLayer = BackgroundLayer::create();
 		CC_BREAK_IF(!_backgroundLayer);
 		this->addChild(_backgroundLayer);
+
+
 		_fishLayer = FishLayer::create();
 		CC_BREAK_IF(!_fishLayer);
 		this->addChild(_fishLayer);
+
+
 		_cannonLayer = CannonLayer::create();
 		CC_BREAK_IF(!_cannonLayer);
 		this->addChild(_cannonLayer);
+
+
 		_touchLayer = TouchLayer::create();
 		CC_BREAK_IF(!_touchLayer);
 		this->addChild(_touchLayer);
+
+
 		_paneLayer = PanelLayer::create();
 		CC_BREAK_IF(!_paneLayer);
 		this->addChild(_paneLayer);
+
 		_paneLayer->getGoldCounter()->setNumber(FishJoyData::getInstance()->getGold());
 		this->scheduleUpdate();
 		return true;
@@ -74,6 +85,9 @@ void GameScene::preloadResources(void)
 		CCAnimation* animation = CCAnimation::createWithSpriteFrames(array, 0.15f);
 		CCString* animationName = CCString::createWithFormat("fish_animation_%02d", i + 1);
 		CCAnimationCache::sharedAnimationCache()->addAnimation(animation, animationName->getCString());
+
+		
+		PersonalAudioEngine::sharedEngine();//音效资源的预加载
 	}
 	
 }
@@ -182,4 +196,43 @@ void GameScene::onEnter()
 {
 	CCScene::onEnter();
 	PersonalAudioEngine::getInstance()->playBackgroundMusic(3);
+}
+void GameScene::pause()//暂停
+{
+	PersonalAudioEngine::sharedEngine()->pauseBackgroundMusic();
+	PersonalAudioEngine::sharedEngine()->playEffect("bgm_button.aif");
+	this->operateAllSchedulerAndActions(this, k_Operate_Pause);
+	_touchLayer->setTouchEnabled(false);
+	this->addChild(_menuLayer);
+}
+void GameScene::operateAllSchedulerAndActions(CCNode* node, OperateFlag flag)
+{
+	if (node->isRunning()){
+		switch (flag) {
+		case k_Operate_Pause:
+			node->pauseSchedulerAndActions();
+			break;
+		case k_Operate_Resume:
+			node->resumeSchedulerAndActions();
+			break;
+		default:
+			break;
+		}
+		CCArray* array = node->getChildren();
+		if (array != NULL && array->count()>0){
+			CCObject* iterator;
+			CCARRAY_FOREACH(array, iterator){
+				CCNode* child = (CCNode*)iterator;
+				this->operateAllSchedulerAndActions(child, flag);
+			}
+		}
+	}
+}
+
+void GameScene::Resume()//重新开始
+{
+	this->operateAllSchedulerAndActions(this, k_Operate_Resume);
+	PersonalAudioEngine::sharedEngine()->resumeBackgroundMusic();
+	this->removeChild(_menuLayer, false);
+	_touchLayer->setTouchEnabled(true);
 }

@@ -32,6 +32,11 @@ bool PersonalAudioEngine::init()
 	this->preloadEffect("bgm_button.aif");
 	this->preloadEffect("bgm_fire.aif");
 	this->preloadEffect("bgm_net.mp3");
+	
+
+	this->setBackgroundMusicVolume(FishJoyData::getInstance()->getIsMusic());
+	this->setEffectsVolume(FishJoyData::getInstance()->getIsSound());
+
 	return true;
 }
 void PersonalAudioEngine::playBackgroundMusic(int type)
@@ -53,4 +58,14 @@ void PersonalAudioEngine::playEffect(EffectType type)
 		SimpleAudioEngine::playEffect("bgm_button.aif");
 		break;
 	}
+}
+
+void PersonalAudioEngine::setBackgroundMusicVolume(float volume){
+
+	SimpleAudioEngine::setBackgroundMusicVolume(volume);//调整音量大小
+	FishJoyData::getInstance()->setIsMusic(volume);//写入文档记住
+}
+void PersonalAudioEngine::setEffectsVolume(float volume){
+	SimpleAudioEngine::setEffectsVolume(volume);//调整音量大小
+	FishJoyData::getInstance()->setIsSound(volume);//写入文档记住
 }
