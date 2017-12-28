@@ -39,6 +39,7 @@ bool GameScene::init()
 
 void GameScene::preloadResources(void)
 {
+	PersonalAudioEngine::getInstance();
 	CCSpriteFrameCache* spriteFrameCache = CCSpriteFrameCache::sharedSpriteFrameCache();
 	//修改以下plist文件， 删除key中的中文， 否则spriteFrameByName函数无法找到Frame，将返回NULL
 	spriteFrameCache->addSpriteFramesWithFile("FishActor-Large-ipadhd.plist");		//修改metadata->realTextureFileName->FishActor-Large-ipadhdhd.png, textureFileName->FishActor-Large-ipadhd.png
@@ -176,4 +177,9 @@ void GameScene::alterGold(int delta)
 	FishJoyData* _fishJoyData = FishJoyData::getInstance();
 	_fishJoyData->alterGold(delta);
 	_paneLayer->getGoldCounter()->setNumber(_fishJoyData->getGold());
+}
+void GameScene::onEnter()
+{
+	CCScene::onEnter();
+	PersonalAudioEngine::getInstance()->playBackgroundMusic(3);
 }

@@ -3,7 +3,7 @@
 #include "Cannon.h"
 #include "Bullet.h"
 #include "FishNet.h"
-
+#include "PersonalAudioEngine.h"
 USING_NS_CC;
 
 #define _WEAPON_H

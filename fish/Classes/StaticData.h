@@ -29,7 +29,9 @@ USING_NS_CC;
 
 
 class StaticData:public CCObject {
-public:
+public:	
+	static StaticData * getInstance();
+	static void destoryIntance();
 	static StaticData* sharedStaticData();
 	static void purge();
 	int intValueFromKey(const string& key);

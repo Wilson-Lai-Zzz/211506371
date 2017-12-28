@@ -9,6 +9,7 @@
 #include "PanelLayer.h"
 #include "FishJoyData.h"
 #include "GoldCounterLayer.h"
+#include "PersonalAudioEngine.h"
 USING_NS_CC;
 
 class GameScene :
@@ -22,6 +23,7 @@ public:
 	void cannonAimAt(CCPoint target);
 	void cannonShootTo(CCPoint target);
 	void alterGold(int delta);
+	void onEnter();
 protected:
 	BackgroundLayer* _backgroundLayer;
 	FishLayer* _fishLayer;

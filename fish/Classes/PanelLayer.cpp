@@ -1,4 +1,7 @@
 #include "PanelLayer.h"
+#include "GameScene.h"
+
+USING_NS_CC;
 PanelLayer::PanelLayer(void)
 {
 
@@ -15,8 +18,29 @@ bool PanelLayer::init()
 		return false;
 	}
 
-	_goldCounter = GoldCounterLayer::create(0);
+	_goldCounter = GoldCounterLayer::create(0);//创建积分器
 	addChild(_goldCounter);
-	_goldCounter->setPosition(ccp(600, 17));
+	_goldCounter->setPosition(ccp(1600, 25));//分数计数器的位置
+	
+	int maxTime =60;//送分倒计时
+	ScheduleCountDown *countDown =ScheduleCountDown::create(this,maxTime,true);
+	addChild(countDown,0, 99);
+	_scheduleLabel=CCLabelAtlas::create(CCString::createWithFormat("%d",maxTime)->getCString(),"baoshiyu_shuzi_02-ipadhd.png",50,54,'0');//创计时器
+	addChild(_scheduleLabel);
+	_scheduleLabel->setPosition(ccp(1600, 1200));//倒计时位置
     return true;
+}
+void PanelLayer::scheduleTimeUp()
+{
+	((GameScene *)getParent())->alterGold(200);
+	ScheduleCountDown *countDown =(ScheduleCountDown *)getChildByTag(99);
+	if(countDown->getLoop()==false)
+	{
+		_scheduleLabel->setVisible(false);
+	}
+}
+void PanelLayer::setScheduleNumber(int number)
+{
+	//CCLabelAtlas *label =(CCLabelAtlas *)getChildByTag(99);
+	_scheduleLabel->setString(CCString::createWithFormat("%d",number)->getCString());
 }
