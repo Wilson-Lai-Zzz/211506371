@@ -1,5 +1,6 @@
 #include "MenuLayer.h"
 #include "GameScene.h"
+#include "PanelLayer.h"
 
 MenuLayer::MenuLayer(void)
 {
@@ -60,13 +61,15 @@ void MenuLayer::createMenu()
 
 void MenuLayer::resume(cocos2d::CCObject* pSender)
 {
+	
 	GameScene* gameScene = (GameScene*)this->getParent();
 	gameScene->Resume();
+	
 }
 void MenuLayer::mainMenu(cocos2d::CCObject* pSender)
 {
-	//GameScene* gameScene = (GameScene*)this->getParent();
-	//gameScene->transToMainMenu();
+	GameScene* gameScene = (GameScene*)this->getParent();
+	gameScene->transToMainMenu();
 }
 void MenuLayer::sound(cocos2d::CCObject* pSender)
 {

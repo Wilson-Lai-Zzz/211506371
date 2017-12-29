@@ -30,6 +30,7 @@ public:
 	void pause();
 	void operateAllSchedulerAndActions(CCNode* node, OperateFlag flag);
 	void Resume();
+	void transToMainMenu();
 protected:
 	BackgroundLayer* _backgroundLayer;
 	FishLayer* _fishLayer;
@@ -37,7 +38,7 @@ protected:
 	CannonLayer* _cannonLayer;
 	TouchLayer* _touchLayer;
 	PanelLayer* _paneLayer;
-
+	int i = 0;
 	//GoldCounterLayer* alterGold;
 
 	void preloadResources(void);

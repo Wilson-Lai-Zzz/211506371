@@ -199,11 +199,15 @@ void GameScene::onEnter()
 }
 void GameScene::pause()//暂停
 {
+	if (i == 0){
 	PersonalAudioEngine::sharedEngine()->pauseBackgroundMusic();
 	PersonalAudioEngine::sharedEngine()->playEffect("bgm_button.aif");
 	this->operateAllSchedulerAndActions(this, k_Operate_Pause);
 	_touchLayer->setTouchEnabled(false);
 	this->addChild(_menuLayer);
+	i = 1;
+
+	}
 }
 void GameScene::operateAllSchedulerAndActions(CCNode* node, OperateFlag flag)
 {
@@ -231,8 +235,15 @@ void GameScene::operateAllSchedulerAndActions(CCNode* node, OperateFlag flag)
 
 void GameScene::Resume()//重新开始
 {
+	if (i ==1){
 	this->operateAllSchedulerAndActions(this, k_Operate_Resume);
 	PersonalAudioEngine::sharedEngine()->resumeBackgroundMusic();
 	this->removeChild(_menuLayer, false);
 	_touchLayer->setTouchEnabled(true);
+	i = 0;
+	}
+}
+
+void GameScene::transToMainMenu(){
+
 }

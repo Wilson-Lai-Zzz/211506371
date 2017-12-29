@@ -11,14 +11,14 @@ public:
 	virtual bool init();
 	PanelLayer(void);
 	~PanelLayer(void);
-
     CREATE_FUNC(PanelLayer)
     CC_SYNTHESIZE_READONLY(GoldCounterLayer *, _goldCounter, GoldCounter)
-
+	void pause(CCObject *sender);
 protected:
 	virtual void scheduleTimeUp();
 	virtual void setScheduleNumber(int number);
 	CCLabelAtlas *_scheduleLabel;
-	void pause(CCObject *sender);
+	
+	
 };
 

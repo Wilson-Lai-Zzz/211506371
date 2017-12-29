@@ -31,14 +31,15 @@ bool PanelLayer::init()
 
 
 	CCSize winSize = CCDirector::sharedDirector()->getWinSize();//获取到应用程序的窗口大小
-	CCMenuItemSprite* pause = CCMenuItemSprite::create(CCSprite::create("112913569.png"),
-		CCSprite::create("112913569.png"),
+	
+	CCMenuItemSprite* pause = CCMenuItemSprite::create(CCSprite::create("112913569on.png"),
+		CCSprite::create("11291356off.png"),
 		this, menu_selector(PanelLayer::pause));
 
 	CCMenu* menu = CCMenu::create(pause, NULL);
 	this->addChild(menu);
 	CCSize pauseSize = pause->getContentSize();
-	menu->setPosition(CCPointMake(100, winSize.height-60));
+	menu->setPosition(CCPointMake(100, winSize.height-60));//暂停键位置
 
 
     return true;
@@ -59,6 +60,11 @@ void PanelLayer::setScheduleNumber(int number)
 }
 void PanelLayer::pause(CCObject *sender)
 {
-	GameScene* gameScene = (GameScene*)this->getParent();
-	gameScene->pause();
+
+		GameScene* gameScene = (GameScene*)this->getParent();
+		gameScene->pause();
+	
+	
+	
+	
 }
